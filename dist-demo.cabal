@@ -14,7 +14,10 @@ category:            Control
 build-type:          Simple
 cabal-version:       >=1.8
 
-executable y
-  -- main-is:             
+executable demo-worksteal
+  main-is:             main_worksteal.hs
+  hs-source-dirs:      src
   -- other-modules:       
-  build-depends:       base ==4.5.*
+  build-depends:       base ==4.5.*, transformers==0.3.*, distributed-process==0.4.*, distributed-process-simplelocalnet==0.2.*
+  extensions:          BangPatterns, TemplateHaskell
+  ghc-options:         -Wall -O2
