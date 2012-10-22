@@ -20,7 +20,7 @@ main = do
   args <- getArgs
   case args of
     ["master", host, port, n] -> do
-      putStrLn "START Master"
+      putStrLn $ "START Master on: " ++ host ++ " " ++ port
       backend <- initializeBackend host port rtable 
       startMaster backend $ \slaves -> do
         liftIO $ print slaves
@@ -28,7 +28,7 @@ main = do
         liftIO $ print result 
       putStrLn "END Master"
     ["slave", host, port] -> do
-      putStrLn "START slave"
+      putStrLn $ "START slave on: " ++ host ++ " " ++ port
       backend <- initializeBackend host port rtable 
       startSlave backend
       putStrLn "END slave"
