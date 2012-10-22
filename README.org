@@ -1,0 +1,4 @@
+* Based on:
+  + Towards Haskell in the Cloud (Epstein, Black and Peyton Jones, Haskell
+    Symposium 2011)
+  + [[http://www.well-typed.com/blog/71][Communication Patterns in Cloud Haskell (Part 1)]]
