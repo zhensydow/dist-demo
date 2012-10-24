@@ -2,6 +2,7 @@
 module Main where
 
 -- -----------------------------------------------------------------------------
+import System.IO( BufferMode(..), hSetBuffering, stdout )
 import Control.Distributed.Process( RemoteTable )
 import Control.Distributed.Process.Node (initRemoteTable)
 import Control.Distributed.Process.Backend.SimpleLocalnet( 
@@ -17,6 +18,7 @@ rtable = Demo.WorkStealing.__remoteTable initRemoteTable
 -- -----------------------------------------------------------------------------
 main :: IO ()
 main = do
+  hSetBuffering stdout LineBuffering
   args <- getArgs
   case args of
     ["master", host, port, n] -> do
