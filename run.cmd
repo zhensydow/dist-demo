@@ -14,7 +14,7 @@ srun --exclusive -c1 -n$((SLURM_NTASKS-1)) run-client.sh &
 
 sleep 30
 
-srun --exclusive -c1 -n1 run-server.sh
+srun --exclusive -c1 -n1 run-server.sh $SLURM_NODELIST
 
 sleep 10
 

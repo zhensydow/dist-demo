@@ -1,5 +1,6 @@
 -- -----------------------------------------------------------------------------
-module Demo.Util( printSlaveResume, nidNode, expandNodenames ) where
+module Demo.Util(
+  printSlaveResume, nidNode, expandNodenames, filterNodes ) where
 
 -- -----------------------------------------------------------------------------
 import Control.Arrow( (&&&) )
@@ -39,6 +40,12 @@ expandNodenames :: T.Text -> [T.Text]
 expandNodenames def = case parse nodeList "" def of
   Left err -> error $ show err
   Right x -> x
+
+-- -----------------------------------------------------------------------------
+filterNodes :: [NodeId] -> String -> [NodeId]
+filterNodes slaves names = filter ((`elem` assigned) . nidNode) slaves
+  where
+    assigned = expandNodenames . T.pack $ names
 
 -- -----------------------------------------------------------------------------
 nodeList :: Parser [T.Text]
