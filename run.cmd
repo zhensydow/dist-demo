@@ -6,11 +6,13 @@
 #@ total_tasks = 32
 #@ wall_clock_limit = 1:00:00
 
+echo Running on $SLURM_NODELIST
+
 date
 
 srun --exclusive -c1 -n$((SLURM_NTASKS-1)) run-client.sh &
 
-sleep 10
+sleep 30
 
 srun --exclusive -c1 -n1 run-server.sh
 
